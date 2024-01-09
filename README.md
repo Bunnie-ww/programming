@@ -27,7 +27,12 @@
 * 用于解引用：*p代表一维解引用；**p代表二维解引用，以此类推。
 
 12.分配动态内存    
-* strdup 函数用于复制一个字符串，并返回一个指向新分配的内存空间的指针。它的函数原型如下：char *strdup(const char *str); 头文件<string.h>   
+* strdup 函数用于复制一个字符串，并返回一个指向新分配的内存空间的指针。它的函数原型如下：char *strdup(const char *str); 头文件<string.h>
+
+13.良好的指针初始化习惯  
+* 如无指向内存先指向NULL  
+* 用malloc分配内存空间  
+* 用memset初始化为0  
  
 
 
