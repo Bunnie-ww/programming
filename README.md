@@ -30,9 +30,9 @@
 3.良好的指针初始化习惯  
 * 如无指向内存先指向NULL  
 * 如果需要定义全局数组需要用malloc分配内存空间(头文件#include <stdlib.h>)   
-      `    int *p=(int*)malloc(sizeof(int));   
-           ...   
-           free(p);`
+      `int *p=(int*)malloc(sizeof(int));   
+       ...   
+       free(p);`
 
 
 
