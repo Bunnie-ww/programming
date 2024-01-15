@@ -84,16 +84,8 @@ class Solution {
 ```
 
 
-2.循环遍历思想：
-适用情形：需要对数组中的每个元素执行相似操作的情况。  
-方法：for循环。  
-eg：循环遍历字符串，通过比较相邻字符来统计重复次数，然后将其压缩成字符和数字的形式。  
 
 
-3.周期性：
-适用情形：字符串比对匹配，周期性出现。  
-方法：a[j+k]==b[k%n2]作为k++的条件。   
-eg：字符串匹配问题。  
 
 
 
@@ -102,9 +94,50 @@ eg：字符串匹配问题。
 1.二分法：根据情况不断改变边界，大大提升搜查速度。     
 eg：搜索旋转排序数组。  
 
+```
+int search(int* nums, int numsSize, int target) {
+    int left = 0, right = numsSize - 1;
+    while (left <= right) {
+        int mid = (right + left) / 2;
+        if (nums[mid] == target)
+            return mid;
+        else if (nums[mid] < nums[right]) {
+            if (nums[mid] < target && target <= nums[right])
+                left = mid + 1;
+            else
+                right = mid - 1;
+        } else {
+            if (nums[left] <= target && target < nums[mid])
+                right = mid - 1;
+            else
+                left = mid + 1;
+        }
+    }
+    return -1;
+}
+
+```
+
+
 
 2.双指针法：指用两个变量在线性结构上遍历而解决的问题，是基于暴力解法的优化。  
 eg：删除有序数组中的重复项。  
+```
+int removeDuplicates(int* nums, int numsSize) {
+    int m=0;
+    for(int i=0;i<numsSize;i++)
+    {
+        if(nums[i]>nums[m])
+        {m++;}
+        nums[m]=nums[i];
+        
+    }
+    
+    return m+1;
+    
+}
+
+```
 
 
 
