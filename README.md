@@ -44,6 +44,43 @@
 适用情形：模拟问题的实际情况，常常用于解决那些难以通过传统的数学推导或已知算法解决的问题。  
 方法：根据问题的特点和要求来设计相应的模拟过程。  
 eg：螺旋顺时针遍历二维数组。 
+`class Solution {
+    public int[] spiralArray(int[][] array) {
+        if (array == null || array.length == 0 || array[0].length == 0) {
+            return new int[0];
+        }
+        int rows = array.length, columns = array[0].length;
+        int[] order = new int[rows * columns];
+        int index = 0;
+        int left = 0, right = columns - 1, top = 0, bottom = rows - 1;
+        while (left <= right && top <= bottom) {
+            for (int column = left; column <= right; column++) {
+                order[index++] = array[top][column];
+            }
+            for (int row = top + 1; row <= bottom; row++) {
+                order[index++] = array[row][right];
+            }
+            if (left < right && top < bottom) {
+                for (int column = right - 1; column > left; column--) {
+                    order[index++] = array[bottom][column];
+                }
+                for (int row = bottom; row > top; row--) {
+                    order[index++] = array[row][left];
+                }
+            }
+            left++;
+            right--;
+            top++;
+            bottom--;
+        }
+        return order;
+    }
+}`
+
+作者：力扣官方题解
+链接：https://leetcode.cn/problems/shun-shi-zhen-da-yin-ju-zhen-lcof/solutions/275394/shun-shi-zhen-da-yin-ju-zhen-by-leetcode-solution/
+来源：力扣（LeetCode）
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
 
 
 2.循环遍历思想：
