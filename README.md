@@ -95,26 +95,54 @@ class Solution {
 eg：搜索旋转排序数组。  
 
 ```
-int search(int* nums, int numsSize, int target) {
-    int left = 0, right = numsSize - 1;
-    while (left <= right) {
-        int mid = (right + left) / 2;
-        if (nums[mid] == target)
-            return mid;
-        else if (nums[mid] < nums[right]) {
-            if (nums[mid] < target && target <= nums[right])
-                left = mid + 1;
+int search(int* nums, int numsSize, int target)
+{
+    int change,left=0,right=numsSize-1,mid;
+    
+    for(int i=0;i<numsSize-1;i++)//找到中间的最大值并改变边界
+    {
+        if(nums[i]>nums[i+1])//细节：为防止i+1溢出，i<numsSize-1
+        {
+             change=i;
+            if(nums[change]==target)
+             {return i;
+              }
             else
-                right = mid - 1;
-        } else {
-            if (nums[left] <= target && target < nums[mid])
-                right = mid - 1;
-            else
-                left = mid + 1;
+             {if(target<nums[0])
+                 {left=change+1;}
+              else
+                 {right=change;}
+              break;
+             }
+             
         }
     }
-    return -1;
+     while(left<=right)//二分法查找
+     {
+         mid=(left+right)/2;
+         if(nums[mid]==target)
+         {
+            
+             return mid;
+             
+         }
+         if(nums[mid]<target)
+         {
+            left=mid+1;//left要变，不然当找不到数时会陷入死循环
+         }
+         if(nums[mid]>target)//相应right也变，满足跳出循环条件
+         {
+             right=mid-1;
+         }
+     }
+    
+     
+         return -1;//函数只要遇到return就会终止，因此可以直接输出return=-1作为最后一种情况
+     
+     
 }
+    
+
 
 ```
 
