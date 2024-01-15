@@ -120,6 +120,9 @@ int search(int* nums, int numsSize, int target) {
 
 
 
+
+
+
 2.双指针法：指用两个变量在线性结构上遍历而解决的问题，是基于暴力解法的优化。  
 eg：删除有序数组中的重复项。  
 ```
@@ -138,6 +141,9 @@ int removeDuplicates(int* nums, int numsSize) {
 }
 
 ```
+
+
+
 
 
 
