@@ -327,6 +327,32 @@ public:
 };
 
 ```
+3. 返回除了该数外其他数的乘积构成的数组
+
+```
+class Solution {
+public:
+    vector<int> statisticalResult(vector<int>& arrayA) {
+        int len=arrayA.size();
+        if(len == 0) return {};
+        int tmp=1;
+        vector<int> arrayB (len, 1);
+        arrayB[0]=1;
+        for(int i=1;i<len;i++){
+            arrayB[i]=arrayB[i-1]*arrayA[i-1];
+
+        }
+        for(int i=len-2;i>=0;i--){
+            tmp*=arrayA[i+1];
+            arrayB[i]*=tmp;
+
+        }
+        return arrayB;
+
+    }
+};
+
+```
 
 
 ## 常用小技巧： 
